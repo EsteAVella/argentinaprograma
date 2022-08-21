@@ -1,0 +1,16 @@
+.container {
+    align-items: center;
+}
+img{
+    row-gap: auto;
+    max-width: 50px;
+    max-height: 50px;
+    min-width: 10px;
+}
+div{
+    inline-size: auto;
+}
+button{
+    float: left;
+    margin: 0,4em;
+}

@@ -1,0 +1,12 @@
+div{
+    background-color: #00358e;
+    height: 80px;
+    align-items: center;
+    
+}
+app-redes{
+    float: right;
+}
+.raw{
+    display: flex;
+}

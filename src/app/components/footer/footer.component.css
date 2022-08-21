@@ -1,0 +1,12 @@
+h3{
+    color: white;
+    font-size: 12px;
+}
+.row{
+    display: flex;
+}
+#divisor{
+    background-color: grey;
+    width: 100%;
+    height: 3px;
+}
