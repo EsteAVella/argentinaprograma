@@ -1,23 +1,104 @@
-<div id="divisor"></div>
-<div class="row">
-    <h1 >Experiencia Laboral</h1>
-    <div id="divisor"></div>
-    <div class="col-lg-10">
-        <ul>
-            <img src="/assets/Abbot.png" class="col-lg-1 col-sm-1">
-                <h1>Laboratorios Abbot</h1> - <h3>1 año</h3>
-                <p>tenia plata para no compartir con mi novia</p>
-                <div id="divisor"></div>
-        </ul>    
-        <ul>
-            <img src="assets/Casasco.png" class="col-lg-1 col sm-1 " alt="">
-            <h1>Laboratorios Casasco SAIC</h1> - <h3>years</h3>
-                <p>Descripicion</p>
-        </ul>    
-        <ul>
-            <img src="assets/evertec-srl-nacimiento.png" class="col-lg-1 col sm-1 " alt="">
-            <h1>Evertec S.A</h1> - <h3>years</h3>
-                <p>Descripicion</p>
-        </ul>    
-    </div>    
+<div  class="colum" style="flex:justify-content">
+    <div >
+  
+  
+    <span style="display: flex;justify-content: space-between;align-items: center;" class="titulo">
+      <p style="padding: 10px;" class="subtitulo">  >> Experiencia </p><app-button (btnClick)="toggleAddTask2()"  style="margin:20px"
+        text="{{ showAddTask2 ? 'close': 'Agregar una nueva Experiencia'}}"><i class="botonAgregar"></i></app-button>
+    
+    </span>
+    
+    <hr>
+    <div id="experiencia">
+
+                <form *ngIf="showAddTask2" [formGroup]="experienciaForm" (ngSubmit)="onSubmit()">
+                  <input type="hidden" name="id" formControlName="id">
+      
+                  <div >
+                    <label class="subtitulo2" for="empresa">Nombre de la empresa</label><abbr title="Este campo es obligatorio">*</abbr>
+                    <div >
+                      <input type="text" name="empresa" formControlName="empresa" class="form-control" required>
+                    </div>
+                  </div>
+      
+                  <div>
+                    <label for="puesto">Puesto</label>
+                    <div>
+                      <textarea rows="1" cols="8"  name="puesto" formControlName="puesto" class="form-control" required style="width:70%;height:50%;resize: none;" ></textarea>
+                    </div>
+                  </div>
+                  <div>
+                    <label for="descripcion">Descripcion</label>
+                    <div>
+                      <textarea rows="10" cols="10"  name="descripcion" formControlName="descripcion" class="form-control" required style="width:70%;height:50%;resize: none;" ></textarea>
+                    </div>
+                  </div>
+                  <div >
+                    <label for="inicio" >Fecha de inicio</label><abbr title="Este campo es obligatorio">*</abbr>
+                    <div >
+                      <input type="date" name="inicio" formControlName="inicio" class="form-control" required style="width:30%">
+                    </div>
+                  </div>
+                  <div >
+                    <label for="fin" >Fecha de finalizacion</label> <abbr title="En caso de colocar que es su trabajo actual, este campo se autodefinira">*</abbr>
+                    <div >
+                      <input type="date" name="fin" formControlName="fin" class="form-control" style="width:30%">
+                    </div>
+                  </div>
+                  
+                  <div>
+                      <label for="trabajo_actual">Es Trabajo actual?</label> <abbr title="Este campo es obligatorio">*</abbr>
+                      <div>
+                  <select id="trabajo_actual" name="trabajo_actual" formControlName="trabajo_actual" class="form-control" required style="width:30%;height:50%;resize: none;">
+                    <option value="si">si</option>
+                    <option value="no">no</option>
+                  </select>
+                </div>       
+                              </div>
+                  
+  
+                  <div >
+                    <button type="submit" style="margin-top: 10px;" [disabled]="!experienciaForm.valid"><span *ngIf="isEdicion2">Editar</span><span *ngIf="!isEdicion2" >Agregar</span></button>
+                  </div>
+    </form>
+        
+
+        <div *ngIf="isUserLogged">
+          <div>
+          <div>
+            <div>
+              <div>
+                <div *ngIf="experienciaList?.length ==0"  style="display:flex;justify-content: center;align-items: center;flex-direction: column;">
+                  <p > Aun no se han cargado datos de experiencia</p>
+                <img src="https://res.cloudinary.com/duooheafl/image/upload/v1659294135/fotos%20portfolio/7228381_searching_cloud_find_browse_information_icon_ua55pb.png" style="width:30%"> 
+                </div>
+            
+          <ul  id="expList" style="list-style: none;">
+            <div>
+          <li *ngFor="let experiencia of experienciaList; let i = index">
+                  <div class="listafoto"> 
+                  <div>
+                    <div style="display:flex ;">
+            <hr>       
+                    <h3 class="subtitulo2"  id="exp-nombre_empresa">{{ experiencia.empresa }}</h3>
+                        <div *ngIf="!showAddTask2" style="display:flex; align-items: center; justify-content: right;" class="col 13">
+                          <fa-icon [icon]="faPencil" class="icono" (click)="onEditExpLaboral(experiencia.id)"  ></fa-icon>        
+                          <fa-icon [icon]="faTrash"  class="icono"  (click)="onDeleteExpLaboral(experiencia.id)"  ></fa-icon>       
+                        </div>
+                    </div>
+                    <p><span  class="textocolumna" id="exp-nombre_titulo"><b>{{ experiencia.puesto }}</b></span>
+                    </p>
+                    <p><span  class="textocolumna" id="exp-nombre_titulo">{{ experiencia.descripcion }}</span>
+                    </p>
+                    <p><span id="exp-fechainicio">{{ experiencia.inicio }}</span><span *ngIf="experiencia.trabajoActual == 'no'" id="exp-fechafin">/{{ experiencia.fin }}</span> <span *ngIf="experiencia.trabajoActual == 'si' ">/Actualidad</span></p> 
+            <hr>
+                    </div>       
+                    </div>
+          </li>
+            </div>
+          </ul>
+              </div>
+            </div>
+        </div> 
+  </div>
 </div>

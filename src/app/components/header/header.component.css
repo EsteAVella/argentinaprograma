@@ -1,11 +1,10 @@
 div{
     background-color: #00358e;
     height: 80px;
-    align-items: center;
-    
 }
 app-redes{
     float: right;
+    margin-top: 18px;
 }
 .raw{
     display: flex;

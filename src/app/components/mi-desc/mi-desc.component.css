@@ -4,10 +4,7 @@
     width: 100%;
     height: 5px;
 }
-div{
-    background-color: #00358e;
-    text-align: center;
-}
+
 .row{
     padding: 20px;
 }
@@ -36,6 +33,32 @@ div{
 h1{
     color: white;
 }
-p{
+p,label{
     color: white;
+}
+.contenedor{
+    background:
+    linear-gradient(-45deg, #674be7, #6e41e7b0, #9925ea);
+    background-size: 150%;
+    margin: 20px;
+    padding-left: 100px;
+    border: 3px solid #365572be;
+    padding: 30px;
+    border-radius: 1%;
+    box-shadow:  6px 6px #797878;
+}
+h3 { 
+    color: #ffffff;
+}
+
+.fotoperfil{
+    width: 130px;
+    border-radius: 80%;
+}
+
+img{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    
 }

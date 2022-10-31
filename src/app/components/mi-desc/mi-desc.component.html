@@ -1,22 +1,124 @@
-<div id="divisor"></div>
-<div class=container>
-    <div class="row">
-        <div class="col xs-12 col-sm-12 col-md-12 col-lg-2">  
-            <img src="assets/perfil.jpg" class="img-fluid" id="miPerfil">
-        </div>
-        <div class="col xs-12 col-sm-12 col-md-12 col-lg-2" id="infoPers">
-                <p id="nombre">{{persona.nombre}}  {{persona.apellidos}}</p>
-                <p>Estudiante de Ingenieria Informatica</p>
-                <P>Full Stack Developer JR</P>
-        </div>
-        <div class="col xs-12 col-sm-12 col-md-12 col-lg-8">
-            <span>
-                <h1> Acerca de mi</h1>
-                    <p>Argentino, apasionado por crear todo tipo de cosas, estudiando ingenieria me cruce con la materia de elementos de programacion
-                       con la guia de un gran profesor, que me mostro la posibilidad infinita de crear lo que imaginemos en forma de codigo, lo cual me fascino y desde ese momento
-                       empezo mi busqueda para ir aprendiendo nuevas habilidades sobre este maravilloso mundo que es la programacion.
-                    </p>
-            </span>
-        </div>
-    </div>
+<div>
+  <img col src="{{persona.banner}}">
 </div>
+
+<div class="contenedor">
+    <div *ngIf="isUserLogged" class="borde">
+   
+      <div style="display:flex;justify-content:space-evenly;flex-wrap: wrap; margin-top:20px">
+        <div style="margin-top: 20px;">
+          <img class="fotoperfil" src="{{ persona.foto }}" *ngIf="persona.foto !== null " >
+          <img class="fotoperfil" *ngIf="persona.foto== null "  src="https://cdn0.iconfinder.com/data/icons/communication-456/24/account_profile_user_contact_person_avatar_placeholder-512.png">
+        
+        </div>
+
+            <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;margin-top:20px">
+                
+                <h3> {{ persona.nombre }} {{ persona.apellido }}</h3>
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:center;align-items:center; margin-top: 25px;">
+                
+                <p class="mediano">{{ persona.carrera }}</p>
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;margin-top:25px">
+                
+                <p class="mediano">{{ persona.email }}</p>
+            </div>
+    
+            
+  
+      </div>
+      <hr>
+      <div>
+        <div style="display: flex;justify-content: space-between;align-items:center;">
+          <p style="padding: 10px;text-indent:30px;" class="subtitulo" > Acerca de: </p>
+        </div>
+        <div style="display: flex;justify-content:space-between;">
+          <p style="padding-left: 20px;">{{persona.descripcion}}</p>
+          <fa-icon [icon]="faPencil" class="icono" *ngIf="isEdicion5== false" (click)="onEditUser()" style="margin-top:20px;margin-right: 20px;"></fa-icon>
+        </div>
+      </div>
+      
+      <div id="persona">
+        <!-- Modal -->
+        <div id="personaForm" tabindex="-1" aria-labelledby="personaFormLabel" aria-hidden="true">
+          <div>
+            <div  > 
+              <div class="modal-body;">
+                <form [formGroup]="personaForm"  *ngIf="isEdicion5 == true"   style="display:flex;justify-content: center;margin-bottom: 20px;" [formGroup]="personaForm"  (ngSubmit)="onSubmit()">
+                  <div style="padding-right: 45px">
+                    <label for="foto" id="foto">Foto</label>
+                    <ngx-dropzone (change)="onSelect($event)" (change)="onUpload()" >
+                      <ngx-dropzone-label>Place your image Here</ngx-dropzone-label>
+                      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)" >
+                        <ngx-dropzone-label>({{ f.type }})</ngx-dropzone-label>
+                      </ngx-dropzone-image-preview>
+                    </ngx-dropzone>
+                  </div>
+                  
+                  <div style="display:flex;flex-direction:column;padding-right: 30%;">
+                    <div class="form-group">
+                      <label for="nombre">Nombre</label>
+                      <div>
+                  <input type="text" name="nombre" formControlName="nombre" class="form-control" required>
+                </div>
+              </div>
+  
+            
+              <div>
+                <label for="apellido">Apellido</label>
+                <div>
+                  <input type="text" name="apellido" formControlName="apellido" class="form-control" required>
+                </div>
+              </div>
+
+              
+              <div>
+                <label for="carrera">Carrera</label>
+                <div>
+                  <input type="text" name="carrera" formControlName="carrera" class="form-control" required>
+                </div>
+              </div>              
+              
+              <div>
+                <label for="correo">Correo</label>
+                <div>
+                  <input type="text" name="email" formControlName="email" class="form-control" required>
+                </div>
+              </div>              
+              <div>
+                <label for="banner">Banner</label>
+                <div>
+                  <input type="text" name="banner" formControlName="banner" class="form-control" required>
+                </div>
+              </div>
+              
+              
+              
+              <div style="display:flex;flex-direction:column;width:150%;" >
+                <div>
+                  <label for="acercade">Acerca de</label>
+                  <div>
+               
+                  <textarea rows="10" cols="10"  name="descripcion" formControlName="descripcion" class="form-control"  required style="width:150%;resize: none;"></textarea>
+                </div>
+              </div>
+              
+              <div [hidden]="true">
+                <label for="contrasña">Contraseña</label>
+                <div>
+                  <input type="text" name="password" formControlName="password" class="form-control" required>
+                </div>
+              </div>
+            </div>
+            <button type="submit" style="margin-top:10px;">Editar o cerrar</button>
+  
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  

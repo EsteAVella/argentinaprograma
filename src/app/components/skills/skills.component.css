@@ -1,15 +1,71 @@
-#divisor{
-    background-color: grey;
-    width: 100%;
-    height: 5px;
-}
-.row{
-    display:flex;
-}
-div{
-    background-color: rgb(190, 188, 188);
-}
-h1{
-    padding: 35px;
+.skill{
+  color:aqua;
 }
 
+.app{
+  background:
+  linear-gradient(-45deg, #674be7, #6e41e7b0, #6b17ca);
+    background-size: 134%;
+    margin: 20px;
+    padding-left: 100px;
+    border: 3px solid #365572be;
+    padding: 30px;
+    border-radius: 1%;
+    box-shadow:  6px 6px #797878;margin: 30px;
+}
+
+
+.subtitulo2{
+    color: #ffffff;
+    font-weight: 700;
+    font-size:200%;
+    text-indent: 20px;
+}
+.subtitulo{
+    font-size: 180%;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.icono{
+  transition: transform 1s; 
+}
+.icono:hover {
+ color:#53a7ea; 
+}
+
+li:hover{
+  border: 1px solid #53a7ea; ;
+  width:100%;
+
+ 
+}
+ul{
+  padding:0%;
+  margin-left: 10px;
+}
+.skills{
+    width: 80px;
+}
+hr{
+    height: 10px;
+}
+.barrita{
+  display: inline;
+  margin: auto;
+}
+.btnP{
+  display: inline;
+}
+.cubo{
+  padding-left: 100px;
+  border: 3px solid #365572be;
+  padding: 30px;
+  border-radius: 1%;
+  background:
+  linear-gradient(-45deg, #674be7, #6e41e7b0, #9925ea);
+
+}
+.imagen{
+  width: 10px;
+}

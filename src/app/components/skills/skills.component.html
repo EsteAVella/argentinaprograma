@@ -1,104 +1,74 @@
-<div id="divisor"></div>
-<div class="containter">
-   <div class="row">
-        <h1>Skills</h1>
-        <div id="divisor"></div>
-        <div class="text-center col-sm-4 col-md-4 col-lg-4">
-            <circle-progress
-                [showImage]=true
-                [imageSrc]="'/assets/html.png'"
-                [imageHeight]="70"
-                [imageWidth]="70"                
-                [percent]="65"
-                [radius]="100"
-                [outerStrokeWidth]="16"
-                [innerStrokeWidth]="3"
-                [outerStrokeColor]="'#00358e'"
-                [innerStrokeColor]="'rgba(200,220,230,100)'"
-                [animation]="true"
-                [animationDuration]="600"
-          ></circle-progress> 
-        </div>
-        <div class="text-center col-sm-4 col-md-4 col-lg-4">
-            <circle-progress
-                [showImage]=true
-                [imageSrc]="'/assets/CSS.png'"
-                [imageHeight]="70"
-                [imageWidth]="70"                
-                [percent]="85"
-                [radius]="100"
-                [outerStrokeWidth]="16"
-                [innerStrokeWidth]="3"
-                [outerStrokeColor]="'#00358e'"
-                [innerStrokeColor]="'rgba(200,220,230,100)'"
-                [animation]="true"
-                [animationDuration]="600"
-          ></circle-progress> 
-        </div>
-        <div  class="text-center col-sm-4 col-md-4 col-lg-4">
-            <circle-progress
-                [showImage]=true
-                [imageSrc]="'/assets/js.png'"
-                [imageHeight]="70"
-                [imageWidth]="70"                
-                [percent]="85"
-                [radius]="100"
-                [outerStrokeWidth]="16"
-                [innerStrokeWidth]="3"
-                [outerStrokeColor]="'#00358e'"
-                [innerStrokeColor]="'rgba(200,220,230,100)'"
-                [animation]="true"
-                [animationDuration]="600"
-          ></circle-progress> 
-        </div>
-        <div  class="text-center col-sm-4 col-md-4 col-lg-4">
-            <circle-progress
-                [showImage]=true
-                [imageSrc]="'/assets/eng.png'"
-                [imageHeight]="70"
-                [imageWidth]="70"                
-                [percent]="85"
-                [radius]="100"
-                [outerStrokeWidth]="16"
-                [innerStrokeWidth]="3"
-                [outerStrokeColor]="'#00358e'"
-                [innerStrokeColor]="'rgba(200,220,230,100)'"
-                [animation]="true"
-                [animationDuration]="600"
-          ></circle-progress> 
-        </div>
-        <div  class="text-center col-sm-4 col-md-4 col-lg-4">
-            <circle-progress
-                [showImage]=true
-                [imageSrc]="'/assets/git.png/'"
-                [imageHeight]="70"
-                [imageWidth]="70"                
-                [percent]="85"
-                [radius]="100"
-                [outerStrokeWidth]="16"
-                [innerStrokeWidth]="3"
-                [outerStrokeColor]="'#00358e'"
-                [innerStrokeColor]="'rgba(200,220,230,100)'"
-                [animation]="true"
-                [animationDuration]="600"
-          ></circle-progress> 
-        </div>
-        <div  class="text-center col-sm-4 col-md-4 col-lg-4">
-            <circle-progress
-                [showImage]=true
-                [imageSrc]="'/assets/grupal.png'"
-                [imageHeight]="70"
-                [imageWidth]="70"                
-                [percent]="85"
-                [radius]="100"
-                [outerStrokeWidth]="16"
-                [innerStrokeWidth]="3"
-                [outerStrokeColor]="'#00358e'"
-                [innerStrokeColor]="'rgba(200,220,230,100)'"
-                [animation]="true"
-                [animationDuration]="600"
-          ></circle-progress> 
-        </div>
+<div class="app">
+  <span style="display: flex;justify-content: space-between;align-items: center;">
+    <p style="padding-left: 30px;" class="subtitulo"> >> Skills</p>
+
+    <app-button (btnClick)="toggleAddTask3()"  style="padding-right: 20px;" text="{{ showAddTask3 ? 'close': 'Agregar una nueva Habilidad'}}"><i
+        class="fa-solid fa-plus"></i></app-button>
+  </span>
+
+  <div id="skill">
+    <div id="skillForm" tabindex="-1" aria-labelledby="skillFormLabel" aria-hidden="true">
+      <div>
+        <div>
+          
+          <form *ngIf="showAddTask3" [formGroup]="skillForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="Nombre">Habilidad</label><abbr title="Este campo es obligatorio">*</abbr>
+              <div>
+                <input type="text" name="skill" formControlName="nombre" class="form-control" required>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="porcentaje">Porcentaje</label><abbr title="Este campo es obligatorio">*</abbr>
         
-    </div> 
-</div>
+              <div>
+                <input type="number" name="skill" formControlName="porcentaje" class="form-control" max="100" min="0" oninput="if(this.value >100){
+                  this.value =100;
+                }if(this.value<0){
+                  this.value=0
+                }" required>
+              </div>
+
+            </div>
+            <button type="submit" [disabled]="!skillForm.valid"><span *ngIf="isEdicion3">Editar</span><span
+                *ngIf="!isEdicion3">Agregar</span></button>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    
+      <div>
+        <!-- <div *ngIf="skillList.length ==0"> -->
+          
+          <!-- <img src="https://res.cloudinary.com/duooheafl/image/upload/v1659294135/fotos%20portfolio/7228381_searching_cloud_find_browse_information_icon_ua55pb.png" style="width:20%"> -->
+        </div>
+       
+        <div *ngFor="let skill of skillList; let i = index" class="">
+          <div style="padding:40px" class="cubo">
+            <div style="display:inline; margin:25px;" class="imagen" >
+              <p class="subtitulo2" id="skill">{{skill.nombre}}</p>
+              <hr>
+            </div>
+            <div class="barrita">
+              <progress id="file" min="0" max="100" value="{{skill.porcentaje}}" style="width: 80%;height: 50px;"></progress>
+            </div>  
+              <div style=" align-items: center; float: right" class="btnP">
+                <p class="subtitulo2" id="Nombre"> {{skill.porcentaje}}% 
+                  <span>
+                    <fa-icon [icon]="faPencil" class="icono" style="padding-left: 50px;" (click)="onEditSkill(i)"></fa-icon>
+                    <fa-icon [icon]="faTrash" class="icono" (click)="onDeleteSkill(i)" style="margin:20px"></fa-icon>
+                  </span> 
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+<!-- </div> -->

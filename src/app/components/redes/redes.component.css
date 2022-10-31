@@ -2,10 +2,12 @@
     align-items: center;
 }
 img{
+  
     row-gap: auto;
-    max-width: 50px;
+    max-width: 100px;
     max-height: 50px;
     min-width: 10px;
+    align-items: center;
 }
 div{
     inline-size: auto;
@@ -13,4 +15,11 @@ div{
 button{
     float: left;
     margin: 0,4em;
+}
+#a{
+    width: 50px;
+    
+}
+label{
+    color: #ffffff;
 }

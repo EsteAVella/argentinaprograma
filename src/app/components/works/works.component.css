@@ -1,17 +1,78 @@
-div{
-    background-color: rgb(190, 188, 188);
-}
-h1,h3{
-    display: inline;
-    color: black;
-    margin: 20px;
+h3{
+    color: #ffffff;
     
 }
-#divisor{
-    background-color: grey;
-    width: 100%;
-    height: 5px;
+hr{
+    color:aliceblue;
+    size: 50px;
 }
-img{
-    padding: 30px 20px;
+p,label{
+    color: #ffffff
+    
 }
+.botonAgregar{
+    background:
+    linear-gradient(-45deg, #674be7, #6e41e7b0, #9925ea);
+}
+.fotopequeña{
+	
+    background-size:cover;
+	float:left; 
+	width: 45px;
+	height: 45px;
+
+  } 
+
+  .colum{
+    
+    background:
+    linear-gradient(-45deg, #674be7, #6e41e7b0, #9925ea);
+    background-size: 150%;
+    margin: 20px;
+    padding-left: 100px;
+    border: 3px solid #365572be;
+    padding: 30px;
+    border-radius: 1%;
+    box-shadow:  6px 6px #797878;
+}
+
+
+.listafoto{
+	display:flex;
+	flex-direction: column;
+
+}
+
+.subtitulo2{
+    font-weight: 700;
+    font-size: 150%;
+    text-indent: 30px;
+    margin: 20px;
+}
+.subtitulo{
+    font-size: 200%;
+    margin-left: 60px;
+    font-weight: 600;
+    
+
+}
+li:hover{
+    border: 1px solid #53a7ea; ;
+    width:100%;
+
+   
+}
+ul{
+    padding:0%;
+    margin-left: 10px;
+}
+
+
+.icono{
+    margin-right:20px;
+    transition: transform 1s; 
+}
+.icono:hover {
+   color:#53a7ea; 
+}
+

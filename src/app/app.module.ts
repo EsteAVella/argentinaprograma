@@ -7,16 +7,20 @@ import { HeaderComponent } from './components/header/header.component';
 import { LogoArgComponent } from './components/logo-arg/logo-arg.component';
 import { RedesComponent } from './components/redes/redes.component';
 import { MiDescComponent } from './components/mi-desc/mi-desc.component';
-import { BannerComponent } from './components/banner/banner.component';
 import { WorksComponent } from './components/works/works.component';
 import { FormacionComponent } from './components/formacion/formacion.component';
-import { NgCircleProgressModule } from 'ng-circle-progress';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { ButtonComponent } from './components/button/button.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+
 
 @NgModule({
   declarations: [
@@ -24,22 +28,27 @@ import { LoginComponent } from './components/login/login.component';
     HeaderComponent,
     LogoArgComponent,
     RedesComponent,
-    BannerComponent,
+    FormacionComponent,
     MiDescComponent,
     WorksComponent,
-    FormacionComponent,
     SkillsComponent,
     ProyectosComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ButtonComponent,
+
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgCircleProgressModule.forRoot({}),
     HttpClientModule,
-
+    ReactiveFormsModule,
+    FormsModule,
+    FontAwesomeModule,
+    RouterModule,
+    NgxDropzoneModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,10 +1,78 @@
-<div class="raw">
-    <div class="container">
+<div class="navbar">
+    <div style=" display:flex">
+        <img
+            src="">
+        <p style="color:white;font-size: 600;padding-top:10px"></p>
+    </div>
+    <div style="display: flex;">
+        <div >
+                <fa-icon [icon]="faPencil" class="icono" *ngIf="isEdicion6== false" (click)="onEditRedes()" style="margin-top:20px;margin-right: 20px;"></fa-icon>    
+           
+            <a *ngIf=" this.redes?.face != null && redes?.face != ''" href="{{redes.face}}"> <img 
+                src="https://res.cloudinary.com/dujdzguzf/image/upload/v1663681381/facebook_jsujkt.png"
+                style="width:30px;padding-top: 20px;padding-right: 10px;"> </a>
             
-            <a href="https://www.facebook.com/esteban011"><img src="assets/facebook.png" alt=""></a>
-            <a href="https://www.linkedin.com/in/esteban-andres-avella-442623150/"> <img src="assets/Linkedin.png" alt=""></a>
-            <a href="https://github.com/EsteAVella"><img src="assets/git.png" alt=""></a>
-            <a href="https://www.instagram.com/esteban.avel/"><img src="assets/Instagram.png" alt=""></a> 
-            <button type="button" class="btn btn-outline-light" (click)="login()">Log In </button>
+            <a *ngIf=" redes?.insta != null && redes?.insta != ''" href="{{redes.insta}}"> <img  
+                src="https://res.cloudinary.com/dujdzguzf/image/upload/v1663681430/Instagram_eso06z.webp"
+                style="width:30px;padding-top: 20px;padding-right: 10px;"> </a>
+            
+            <a *ngIf=" redes?.linked != null && redes?.face != ''" href="{{redes.linked}}"> <img 
+                src="https://res.cloudinary.com/dujdzguzf/image/upload/v1663681417/Linkedin_ndgwc2.png"
+                style="width:30px;padding-top: 20px;padding-right: 10px;"> </a>
+            
+            <a *ngIf=" redes?.git != null && this.redes?.git != ''" href="{{redes.git}}"> <img 
+                src="https://res.cloudinary.com/dujdzguzf/image/upload/v1663681393/GIT_uafstr.png"
+                style="width:30px;padding-top: 20px;padding-right: 10px;"> </a>        
+            </div>
+        
+        <p style="color:white;font-size: 600;padding-right: 40px;padding-top:10px" (click)="logout()">Logout</p>
+
     </div>
 </div>
+
+<fa-icon [icon]="faPencil" class="icono" *ngIf="isEdicion6 == true"  (click)="onEditRedes()"
+    style="margin-top:20px;margin-right: 20px;"></fa-icon>
+<fa-icon [icon]="faPlus" class="icono" *ngIf=" isEdicion6 == false" (click)="onNewRedes()"
+    style="margin-top:20px;margin-right: 20px;"></fa-icon>
+
+
+
+
+
+<form *ngIf="showAddTask6" [formGroup]="redesForm" (ngSubmit)="onSubmit()">
+
+    <div style="display:flex;justify-content:center;flex-direction:row">
+        
+
+        <div>
+            <input name="footer" [hidden]="true" formControlName="footer" class="form-control" >
+        </div>
+
+        <div>
+            <label for="linked">LinkedIn</label>
+            <div>
+                <input type="text" name="linked" formControlName="linked" class="form-control" required>
+            </div>
+        </div>
+        <div>
+            <label for="face">Facebook</label>
+            <div>
+                <input type="text" name="face" formControlName="face" class="form-control" required>
+            </div>
+        </div>
+        <div>
+            <label for="git">Git-Hub</label>
+            <div>
+                <input type="text" name="git" formControlName="git" class="form-control" required>
+            </div>
+        </div>
+        <div>
+            <label for="insta">Instagram</label>
+            <div>
+                <input type="text" name="insta" formControlName="insta" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <button  type="submit">Enviar</button>
+</form>
