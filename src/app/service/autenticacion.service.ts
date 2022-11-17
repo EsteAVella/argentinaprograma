@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class AutenticacionService {
   
-  url="https://git.heroku.com/backendavella.git/personas/login";
+  url="https://backendavella.herokuapp.com/personas/login";
   
   headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
