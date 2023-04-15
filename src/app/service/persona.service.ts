@@ -8,7 +8,7 @@ import { persona } from "../config/persona.model";
 })
 
 export class PersonaService {
-     url = 'https://git.heroku.com/backendavella.git/personas/';
+     url = 'https://springboot-avellabackend.onrender.com/personas/';
 
     constructor( private http : HttpClient ) { }
 
