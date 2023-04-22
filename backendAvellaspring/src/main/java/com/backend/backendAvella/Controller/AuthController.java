@@ -8,11 +8,13 @@ import com.backend.backendAvella.Entity.Persona;
 import com.backend.backendAvella.Entity.dto.UserDto;
 import com.backend.backendAvella.Service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin( origins = "https://portfolio-avella.web.app" )
 
 public class AuthController {
     
